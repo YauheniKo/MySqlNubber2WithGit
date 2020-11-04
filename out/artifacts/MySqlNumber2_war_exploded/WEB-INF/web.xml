@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+
+<!--метод post создания авто -->
+<servlet>
+    <servlet-name>create-car-servlet</servlet-name>
+<servlet-class>somePackage.CreateCarServlet</servlet-class>
+</servlet>
+    <servlet-mapping>
+        <servlet-name>create-car-servlet</servlet-name>
+        <url-pattern>/car-create</url-pattern>
+    </servlet-mapping>
+
+
+
+    <!--метод post удаления авто -->
+    <servlet>
+        <servlet-name>delete-car-servlet</servlet-name>
+        <servlet-class>somePackage.DeleteCarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>delete-car-servlet</servlet-name>
+        <url-pattern>/car-delete</url-pattern>
+    </servlet-mapping>
+
+
+    <!--метод get все авто -->
+    <servlet>
+        <servlet-name>all-car-servlet</servlet-name>
+        <servlet-class>somePackage.AllCarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>all-car-servlet</servlet-name>
+        <url-pattern>/car-all</url-pattern>
+    </servlet-mapping>
+
+
+
+    <!--Основная jsp страница администратора -->
+    <servlet>
+        <servlet-name>RentalAuto</servlet-name>
+        <jsp-file>/carAdministrator.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RentalAuto</servlet-name>
+        <url-pattern>/car-create-jsp</url-pattern>
+    </servlet-mapping>
+
+
+
+
+    <!--метод post для входа(поиска) User  -->
+    <servlet>
+        <servlet-name>user-input-servlet</servlet-name>
+        <servlet-class>somePackage.InputUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>user-input-servlet</servlet-name>
+        <url-pattern>/user-input</url-pattern>
+    </servlet-mapping>
+
+    <!--Jsp страница при неудачной попытке создания чего-либо -->
+    <servlet>
+        <servlet-name>CarCreateError</servlet-name>
+        <jsp-file>/errorPage.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CarCreateError</servlet-name>
+        <url-pattern>/error-page</url-pattern>
+    </servlet-mapping>
+
+    <!--get метод для поиска авто по ID -->
+    <servlet>
+        <servlet-name>CarSearchID</servlet-name>
+        <servlet-class>somePackage.SearchIDCarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CarSearchID</servlet-name>
+        <url-pattern>/car-searchID</url-pattern>
+    </servlet-mapping>
+
+    <!--get метод для поиска авто по двум параметрам -->
+    <servlet>
+        <servlet-name>CarSearchTwoPar</servlet-name>
+        <servlet-class>somePackage.SearchCarTwoParam</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CarSearchTwoPar</servlet-name>
+        <url-pattern>/car-search-two-param</url-pattern>
+    </servlet-mapping>
+
+    <!--Jsp страница администратора для User -->
+    <servlet>
+        <servlet-name>AdministratorUserJsp</servlet-name>
+        <jsp-file>/userAdministratorJsp.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdministratorUserJsp</servlet-name>
+        <url-pattern>/user-admin-jsp</url-pattern>
+    </servlet-mapping>
+
+    <!--метод Get для поиска  User оп ID -->
+    <servlet>
+        <servlet-name>SearchUserID</servlet-name>
+        <servlet-class>somePackage.SearchUserIDServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchUserID</servlet-name>
+        <url-pattern>/user-searchID</url-pattern>
+    </servlet-mapping>
+
+    <!--метод Post для удаления  User  -->
+    <servlet>
+        <servlet-name>DeleteUserID</servlet-name>
+        <servlet-class>somePackage.DeleteUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteUserID</servlet-name>
+        <url-pattern>/user-delete</url-pattern>
+    </servlet-mapping>
+
+
+    <!--метод post создания пользователяя -->
+    <servlet>
+        <servlet-name>RegistrationUserServlet</servlet-name>
+        <servlet-class>somePackage.RegistrationUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrationUserServlet</servlet-name>
+        <url-pattern>/user-registration</url-pattern>
+    </servlet-mapping>
+
+    <!--метод get все пользователи -->
+    <servlet>
+        <servlet-name>AllUser</servlet-name>
+        <servlet-class>somePackage.AllUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AllUser</servlet-name>
+        <url-pattern>/user-all</url-pattern>
+    </servlet-mapping>
+
+
+
+</web-app>
