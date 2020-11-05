@@ -17,6 +17,7 @@ public interface ServiceInterf<T> {
 
     List<T> getAll() throws ServiceException;
 
+    boolean change(T obj) throws ServiceException;
 
 
 

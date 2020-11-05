@@ -20,5 +20,9 @@ public interface DAOInterf<T> {
 
     List<T> getAll() throws DAOException,SQLException;
 
+   boolean change(T obj) throws DAOException, SQLException;
+
+
+
 
 }

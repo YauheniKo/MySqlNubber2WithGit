@@ -21,6 +21,9 @@ final class CommandProvider {
         commands.put("DELETE_USER", new DeleteUser());
         commands.put("SEARCH_USER_ID", new SearchIDUser());
         commands.put("ALL_USER", new GetAllUser());
+        commands.put("CHANGER_CAR", new ChangeCar());
+        commands.put("CHANGER_ROLE_PASS", new ChangePassUser());
+
     }
 
     Command getCommand(String commandName) {

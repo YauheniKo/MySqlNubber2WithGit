@@ -8,6 +8,7 @@ import service.service_exception.ServiceException;
 import service.service_inerf.ServiceInterf;
 
 import java.sql.SQLException;
+import java.sql.SQLRecoverableException;
 import java.util.List;
 
 public class RoleService implements ServiceInterf<Role> {
@@ -101,5 +102,34 @@ public class RoleService implements ServiceInterf<Role> {
 
 
         return res;
+    }
+
+    @Override
+    public boolean change(Role role) throws ServiceException {
+        List<Role> list = null;
+        boolean res;
+        String login = role.getLogin();
+        String password = role.getPassword();
+
+        DAOFactory daoFactory = null;
+        try {
+
+            daoFactory = DAOFactory.getInstance();
+            list = daoFactory.getRoleDAO().getAll();
+            for (Role rolesCheck : list) {
+                if (rolesCheck.getLogin().equalsIgnoreCase(login) &
+                        rolesCheck.getPassword().equalsIgnoreCase(password)) {
+
+                    throw new DAOException("Это старый пароль");
+                }
+            }
+            res = daoFactory.getRoleDAO().change(role);
+
+        } catch (DAOException | SQLException e) {
+            throw new ServiceException("Ошибка изменения  пароля");
+        }
+
+        return res;
+
     }
 }

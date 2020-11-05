@@ -16,6 +16,12 @@ public class Role {
         this.role=role;
 
     }
+    public Role( String login,String password) {
+        this.login = login;
+        this.password = password;
+        this.role="USER";
+
+    }
     public Role( String login) {
 
         this.login = login;

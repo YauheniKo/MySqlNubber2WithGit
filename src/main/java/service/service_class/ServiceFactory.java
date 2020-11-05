@@ -4,13 +4,13 @@ import service.service_inerf.ServiceInterf;
 
 public class ServiceFactory {
 
-    private static   final ServiceFactory instance = new ServiceFactory();
+    private static final ServiceFactory instance = new ServiceFactory();
 
-    private final ServiceInterf serviceCar =new CarService();
+    private final ServiceInterf serviceCar = new CarService();
 
-    private final ServiceInterf serviceRole =new RoleService();
+    private final ServiceInterf serviceRole = new RoleService();
 
-    public static ServiceFactory getInstance(){
+    public static ServiceFactory getInstance() {
         return instance;
     }
 
@@ -19,6 +19,7 @@ public class ServiceFactory {
     }
 
     public ServiceInterf getServiceRole() {
+
         return serviceRole;
     }
 }

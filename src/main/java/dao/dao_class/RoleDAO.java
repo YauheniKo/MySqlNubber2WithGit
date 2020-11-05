@@ -17,6 +17,7 @@ public class RoleDAO implements DAOInterf<Role> {
     public static final String INSERT_NEW = "INSERT INTO role (login, password, role) VALUES (?,?,?)";
     public static final String DELETE = "DELETE FROM role  WHERE login=?";
     public static final String GET_ALL = "SELECT*FROM role ";
+    public static final String CHANGE = "UPDATE role SET password=? where login=?";
 
 
     @Override
@@ -53,7 +54,7 @@ public class RoleDAO implements DAOInterf<Role> {
     }
 
     @Override
-    public Role search(String log, String passw) throws  SQLException,DAOException {
+    public  Role search(String log, String passw) throws  SQLException,DAOException {
 
         Role role = null;
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -178,4 +179,29 @@ public class RoleDAO implements DAOInterf<Role> {
         return list;
 
     }
+
+    @Override
+    public boolean change(Role role) throws DAOException, SQLException {
+
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+             Statement statement = connection.createStatement();
+             PreparedStatement preparedStatement = connection.prepareStatement(CHANGE)) {
+
+
+            preparedStatement.setString(1, role.getPassword());
+            preparedStatement.setString(2, role.getLogin());
+
+
+            if(preparedStatement.executeUpdate()!=1){
+                throw new DAOException("Не верный пароль");
+            }
+
+
+        } catch (SQLException e) {
+            throw new DAOException("Произошла ошибка изменения параметров");
+        }
+        return true;
+    }
+
+
 }

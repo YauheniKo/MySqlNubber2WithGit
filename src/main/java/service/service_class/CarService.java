@@ -95,4 +95,22 @@ public class CarService implements ServiceInterf<Car> {
 
         return res;
     }
+    @Override
+    public boolean change(Car car) throws ServiceException {
+        boolean res;
+
+
+        DAOFactory daoFactory = null;
+        try {
+            daoFactory = DAOFactory.getInstance();
+            res =daoFactory.getCarDAO().change(car);
+
+        } catch (DAOException | SQLException e) {
+            throw new ServiceException("Ошибка редактирования авто");
+        }
+
+        return res;
+
+    }
+
 }

@@ -17,6 +17,7 @@ public class CarDAO implements DAOInterf<Car> {
     public static final String INSERT_NEW = "INSERT INTO auto VALUES (?,?,?)";
     public static final String DELETE = "DELETE FROM auto  WHERE id=?";
     public static final String GET_ALL = "SELECT*FROM auto  ";
+    public static final String CHANGE = "UPDATE auto SET model=?, type=? where id=?";
 
     @Override
     public Car search(int iD) throws  DAOException,SQLException {
@@ -151,4 +152,29 @@ public class CarDAO implements DAOInterf<Car> {
 
         return list;
     }
+
+    @Override
+    public boolean change(Car car) throws DAOException, SQLException {
+
+        try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+             Statement statement = connection.createStatement();
+             PreparedStatement preparedStatement = connection.prepareStatement(CHANGE)) {
+
+
+            preparedStatement.setString(1, car.getModel());
+            preparedStatement.setString(2, car.getType());
+            preparedStatement.setInt(3, car.getId());
+
+           if(preparedStatement.executeUpdate()!=1){
+               throw new DAOException("Такого id не существует");
+           }
+
+
+        } catch (SQLException e) {
+            throw new DAOException("Произошла ошибка изменения параметров");
+        }
+        return true;
+    }
+
+
 }
