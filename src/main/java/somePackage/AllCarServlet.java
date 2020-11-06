@@ -12,7 +12,6 @@ import java.sql.*;
 
 public class AllCarServlet extends HttpServlet {
 
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter pw = response.getWriter();
         Controller controller =new Controller();

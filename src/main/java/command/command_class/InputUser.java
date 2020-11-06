@@ -16,11 +16,9 @@ public class InputUser implements Command {
 String res;
 
         try {
-            //String id_str = mas[1];
+
             String login = mas[1];
             String passw = mas[2];
-            //int id = Integer.parseInt(id_str);
-
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             ServiceInterf<Role> serviceInterf = serviceFactory.getServiceRole();

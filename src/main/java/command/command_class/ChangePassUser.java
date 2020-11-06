@@ -17,7 +17,7 @@ public class ChangePassUser implements Command {
         String isRes = null;
         boolean requ;
         try {
-            if (mas[1] != null & mas[2] != null) {
+            if (mas[1] != null | mas[2] != null) {
                 String login = mas[1];
                 String password = mas[2];
 
@@ -31,6 +31,10 @@ public class ChangePassUser implements Command {
 
                 return isRes;
             }
+            else
+                return  "Ошибка";
+
+
 
         } catch (ServiceException | ArrayIndexOutOfBoundsException e) {
             isRes = "Ошибка";

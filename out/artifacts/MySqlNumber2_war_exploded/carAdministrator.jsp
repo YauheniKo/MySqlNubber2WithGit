@@ -46,7 +46,7 @@
         #content {
             background: #54B948;
             margin: 0 200px; /* Ширина колонок */
-            padding: 270px;/*Длина колонки*/
+            padding: 170px;/*Длина колонки*/
         }
 
         #aside {
@@ -164,6 +164,23 @@
 
     <div id="content">
 
+        </form>
+        <br>
+        <h1 >Изменение параметров
+            автомобиля</h1>
+        <form method="post" action="/changer-car">
+            <input id="idC" name="idC"> id
+            <br/>
+            <br/>
+            <input id="modelC" name="modelC"> model
+            <br/>
+            <br/>
+            <input id="typeC" name="typeC"> type
+            <br/>
+            <br/>
+            <button type="submit">Changer car</button>
+        </form>
+        <br/>
            <form  method="get" action="/car-all">
                 <a align="center" href="/car-all">All Car</a>
                 </form>

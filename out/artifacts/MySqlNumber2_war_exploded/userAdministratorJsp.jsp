@@ -46,7 +46,7 @@
         #content {
             background: #DEB887;
             margin: 0 200px; /* Ширина колонок */
-            padding: 270px;/*Длина колонки*/
+            padding: 230px;/*Длина колонки*/
         }
 
         #aside {
@@ -154,12 +154,21 @@
             <hr align="center" width="190" size="1" color="#ff0000" />
         </form>
 
-
-
         </p>
     </div>
 
     <div id="content">
+
+        <form method="post" action="/changer-user">
+            <input id="loginC" name="loginC"> login
+            <br/>
+            <input id="passwordC" name="passwordC"> password
+            <br/>
+            <br/>
+            <button type="submit">Изменить пароль</button>
+            <br/>
+            <br/>
+        </form>
 
         <form  method="get" action="/user-all">
             <a align="center" href="/user-all">All User</a>

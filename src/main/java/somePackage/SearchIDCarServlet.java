@@ -10,10 +10,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class SearchIDCarServlet extends HttpServlet {
-    private static final String URL = "jdbc:mysql://localhost:3306/mydbtest" +
-            "?useUnicode=true&serverTimezone=UTC&useSSL=false";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter pw = response.getWriter();

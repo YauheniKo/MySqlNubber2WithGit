@@ -22,7 +22,7 @@ final class CommandProvider {
         commands.put("SEARCH_USER_ID", new SearchIDUser());
         commands.put("ALL_USER", new GetAllUser());
         commands.put("CHANGER_CAR", new ChangeCar());
-        commands.put("CHANGER_ROLE_PASS", new ChangePassUser());
+        commands.put("CHANGER_USER_PASS", new ChangePassUser());
 
     }
 

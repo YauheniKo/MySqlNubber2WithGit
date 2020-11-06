@@ -23,10 +23,10 @@ public class MainDAO {
 
         RoleService roleService=new RoleService();
         Role role=new Role("Lexa","Sukiiii");
-        //System.out.println(roleService.change(role));
+
 
        Controller controller=new Controller();
-        System.out.println(controller.doAction("CHANGER_CAR, 1, man, Suo"));
+        System.out.println(controller.doAction("CHANGER_USER_PASS, Lexa, man"));
         //System.out.println(roleService.create(role));
 
 

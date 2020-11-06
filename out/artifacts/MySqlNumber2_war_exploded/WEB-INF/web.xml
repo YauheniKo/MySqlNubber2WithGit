@@ -5,6 +5,73 @@
          version="4.0">
 
 
+
+    <!--Пробная jsp страница для входа -->
+    <servlet>
+        <servlet-name>LoginationPage</servlet-name>
+        <jsp-file>/testLoginationPage.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginationPage</servlet-name>
+        <url-pattern>/logination-jsp</url-pattern>
+    </servlet-mapping>
+
+    <!--Основная jsp страница администратора -->
+    <servlet>
+        <servlet-name>RentalAuto</servlet-name>
+        <jsp-file>/carAdministrator.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RentalAuto</servlet-name>
+        <url-pattern>/car-create-jsp</url-pattern>
+    </servlet-mapping>
+
+    <!--Jsp страница администратора для User -->
+    <servlet>
+        <servlet-name>AdministratorUserJsp</servlet-name>
+        <jsp-file>/userAdministratorJsp.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdministratorUserJsp</servlet-name>
+        <url-pattern>/user-admin-jsp</url-pattern>
+    </servlet-mapping>
+
+
+
+    <!--Jsp страница при неудачной попытке создания чего-либо -->
+    <servlet>
+        <servlet-name>CarCreateError</servlet-name>
+        <jsp-file>/errorPage.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CarCreateError</servlet-name>
+        <url-pattern>/error-page</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Registration</servlet-name>
+        <jsp-file>/registrationPage.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Registration</servlet-name>
+        <url-pattern>/registration-page</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>MainPage</servlet-name>
+        <jsp-file>/mainPage.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainPage</servlet-name>
+        <url-pattern>/main-page</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+
 <!--метод post создания авто -->
 <servlet>
     <servlet-name>create-car-servlet</servlet-name>
@@ -40,19 +107,6 @@
 
 
 
-    <!--Основная jsp страница администратора -->
-    <servlet>
-        <servlet-name>RentalAuto</servlet-name>
-        <jsp-file>/carAdministrator.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RentalAuto</servlet-name>
-        <url-pattern>/car-create-jsp</url-pattern>
-    </servlet-mapping>
-
-
-
-
     <!--метод post для входа(поиска) User  -->
     <servlet>
         <servlet-name>user-input-servlet</servlet-name>
@@ -63,15 +117,6 @@
         <url-pattern>/user-input</url-pattern>
     </servlet-mapping>
 
-    <!--Jsp страница при неудачной попытке создания чего-либо -->
-    <servlet>
-        <servlet-name>CarCreateError</servlet-name>
-        <jsp-file>/errorPage.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CarCreateError</servlet-name>
-        <url-pattern>/error-page</url-pattern>
-    </servlet-mapping>
 
     <!--get метод для поиска авто по ID -->
     <servlet>
@@ -93,15 +138,6 @@
         <url-pattern>/car-search-two-param</url-pattern>
     </servlet-mapping>
 
-    <!--Jsp страница администратора для User -->
-    <servlet>
-        <servlet-name>AdministratorUserJsp</servlet-name>
-        <jsp-file>/userAdministratorJsp.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AdministratorUserJsp</servlet-name>
-        <url-pattern>/user-admin-jsp</url-pattern>
-    </servlet-mapping>
 
     <!--метод Get для поиска  User оп ID -->
     <servlet>
@@ -142,6 +178,25 @@
     <servlet-mapping>
         <servlet-name>AllUser</servlet-name>
         <url-pattern>/user-all</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ChangerCar</servlet-name>
+        <servlet-class>somePackage.ChangerCarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangerCar</servlet-name>
+        <url-pattern>/changer-car</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ChangerUser</servlet-name>
+        <servlet-class>somePackage.ChangerUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangerUser</servlet-name>
+        <url-pattern>/changer-user</url-pattern>
     </servlet-mapping>
 
 

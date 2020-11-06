@@ -9,15 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class InputUserServlet extends HttpServlet {
-    private static final String URL = "jdbc:mysql://localhost:3306/mydbtest" +
-            "?useUnicode=true&serverTimezone=UTC&useSSL=false";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "root";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String login = request.getParameter("login");
         String password = request.getParameter("password");
+
 
 
         Controller con1 = new Controller();
