@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Eugene
-  Date: 05.11.2020
-  Time: 17:11
+  Date: 06.11.2020
+  Time: 22:15
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -29,26 +29,25 @@
 bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+
 j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
-<form class="form-horizontal" method="post" action="/user-registration">
+<form class="form-horizontal" method="post" action="/user-input">
     <fieldset>
 
         <!-- Form Name -->
-        <legend>Регистрация нового пользователя</legend>
+        <legend>Вход</legend>
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="loginR">Login</label>
+            <label class="col-md-4 control-label" for="login">Login</label>
             <div class="col-md-4">
-                <input id="loginR" name="loginR" type="text" placeholder="Login" class="form-control input-md">
-
+                <input id="login" name="login" type="text" placeholder="Login" class="form-control input-md">
             </div>
         </div>
 
         <!-- Password input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="passwordR">Password </label>
+            <label class="col-md-4 control-label" for="password">Password </label>
             <div class="col-md-4">
-                <input id="passwordR" name="passwordR" type="password" placeholder="Password" class="form-control input-md">
+                <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md">
 
             </div>
         </div>
@@ -57,7 +56,7 @@ j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anon
         <div class="form-group">
             <label class="col-md-4 control-label" for="singlebutton"></label>
             <div class="col-md-4">
-                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Регистрация</button>
+                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Вход</button>
             </div>
         </div>
 
