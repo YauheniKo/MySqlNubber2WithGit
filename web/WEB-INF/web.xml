@@ -66,6 +66,15 @@
         <url-pattern>/input-pageJsp</url-pattern>
     </servlet-mapping>
 
+    <!--Jsp страница просмотра авто -->
+    <servlet>
+        <servlet-name>ViewPage</servlet-name>
+        <jsp-file>/viewCarJsp.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewPage</servlet-name>
+        <url-pattern>/view-page</url-pattern>
+    </servlet-mapping>
 
 
 

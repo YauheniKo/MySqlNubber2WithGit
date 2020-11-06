@@ -25,6 +25,6 @@ public class InputUserServlet extends HttpServlet {
             response.sendRedirect("http://localhost:8080/error-page");
         }
         else
-            response.sendRedirect("https://yandex.ru/drive");
+            response.sendRedirect("https://localhost:8080/view-page");
     }
 }
