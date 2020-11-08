@@ -19,6 +19,8 @@ public class CarDAO implements DAOInterf<Car> {
     public static final String GET_ALL = "SELECT*FROM auto  ";
     public static final String CHANGE = "UPDATE auto SET model=?, type=? where id=?";
 
+
+
     @Override
     public Car search(int iD) throws  DAOException,SQLException {
         Car car = null;
