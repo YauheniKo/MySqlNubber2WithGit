@@ -1,15 +1,14 @@
 package dao.dao_class;
 
 import bean.Car;
-import bean.Role;
-import dao.dao_exception.DAOException;
+import bean.User;
 import dao.dao_interf.DAOInterf;
 
 public class DAOFactory  {
     private static final DAOFactory instance = new DAOFactory();
 
     private DAOInterf<Car> carDAO = new CarDAO();
-    private  DAOInterf<Role> roleDAO=new RoleDAO();
+    private  DAOInterf<User> roleDAO=new UserDAO();
 
 
     private DAOFactory(){

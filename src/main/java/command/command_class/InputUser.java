@@ -1,7 +1,6 @@
 package command.command_class;
 
-import bean.Car;
-import bean.Role;
+import bean.User;
 import command.command_exception.CommandException;
 import command.command_inerf.Command;
 import service.service_class.ServiceFactory;
@@ -12,7 +11,7 @@ public class InputUser implements Command {
     @Override
     public String execute(String request) throws CommandException {
         String[] mas = request.split(", ");
-        Role role = null;
+        User user = null;
 String res;
 
         try {
@@ -21,13 +20,13 @@ String res;
             String passw = mas[2];
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
-            ServiceInterf<Role> serviceInterf = serviceFactory.getServiceRole();
+            ServiceInterf<User> serviceInterf = serviceFactory.getServiceRole();
 
-            role = serviceInterf.search(login, passw);
+            user = serviceInterf.search(login, passw);
 
-            if (role != null) {
+            if (user != null) {
 
-                return role.toString();
+                return user.toString();
             }
             else res="Ошибка";
 

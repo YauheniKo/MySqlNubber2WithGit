@@ -1,7 +1,6 @@
 package command.command_class;
 
-import bean.Car;
-import bean.Role;
+import bean.User;
 import command.command_exception.CommandException;
 import command.command_inerf.Command;
 import service.service_class.ServiceFactory;
@@ -14,7 +13,7 @@ import java.util.List;
         @Override
         public String execute(String request) throws CommandException {
             String[] mas = request.split(", ");
-            List<Role> list;
+            List<User> list;
 
             String res = null;
             try {
@@ -25,7 +24,7 @@ import java.util.List;
 
 
                 ServiceFactory serviceFactory = ServiceFactory.getInstance();
-                ServiceInterf<Role> serviceInterf = serviceFactory.getServiceRole();
+                ServiceInterf<User> serviceInterf = serviceFactory.getServiceRole();
 
                 list = serviceInterf.getAll();
                 res = list.toString();

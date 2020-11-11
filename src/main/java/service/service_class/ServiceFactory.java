@@ -8,7 +8,7 @@ public class ServiceFactory {
 
     private final ServiceInterf serviceCar = new CarService();
 
-    private final ServiceInterf serviceRole = new RoleService();
+    private final ServiceInterf serviceRole = new UserService();
 
     public static ServiceFactory getInstance() {
         return instance;

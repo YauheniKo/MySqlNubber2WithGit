@@ -1,26 +1,24 @@
 package service.service_class;
 
-import bean.Car;
-import bean.Role;
+import bean.User;
 import dao.dao_class.DAOFactory;
 import dao.dao_exception.DAOException;
 import service.service_exception.ServiceException;
 import service.service_inerf.ServiceInterf;
 
 import java.sql.SQLException;
-import java.sql.SQLRecoverableException;
 import java.util.List;
 
-public class RoleService implements ServiceInterf<Role> {
+public class UserService implements ServiceInterf<User> {
 
     @Override
-    public Role search(int id) throws ServiceException {
+    public User search(int id) throws ServiceException {
         DAOFactory daoFactory = null;
-        Role role = null;
+        User user = null;
 
         try {
             daoFactory = DAOFactory.getInstance();
-            role = (Role) daoFactory.getRoleDAO().search(id);
+            user = (User) daoFactory.getRoleDAO().search(id);
 
         } catch (DAOException e) {
             throw new ServiceException("Пользователь не найдено");
@@ -29,18 +27,18 @@ public class RoleService implements ServiceInterf<Role> {
         }
 
 
-        return role;
+        return user;
 
     }
 
     @Override
-    public Role search(String login, String password) throws ServiceException {
+    public User search(String login, String password) throws ServiceException {
         DAOFactory daoFactory = null;
-        Role role = null;
+        User user = null;
 
         try {
             daoFactory = DAOFactory.getInstance();
-            role = (Role) daoFactory.getRoleDAO().search(login, password);
+            user = (User) daoFactory.getRoleDAO().search(login, password);
 
         } catch (DAOException e) {
             throw new ServiceException("Пользователь не найдено");
@@ -49,17 +47,17 @@ public class RoleService implements ServiceInterf<Role> {
         }
 
 
-        return role;
+        return user;
 
     }
 
     @Override
-    public boolean create(Role role) throws ServiceException {
+    public boolean create(User user) throws ServiceException {
         boolean res;
         DAOFactory daoFactory = null;
         try {
             daoFactory = DAOFactory.getInstance();
-            res = daoFactory.getRoleDAO().create(role);
+            res = daoFactory.getRoleDAO().create(user);
 
 
         } catch (DAOException | SQLException e) {
@@ -71,12 +69,12 @@ public class RoleService implements ServiceInterf<Role> {
     }
 
     @Override
-    public boolean delete(Role role) throws ServiceException {
+    public boolean delete(User user) throws ServiceException {
         boolean res;
         DAOFactory daoFactory = null;
         try {
             daoFactory = DAOFactory.getInstance();
-            res = daoFactory.getRoleDAO().delete(role);
+            res = daoFactory.getRoleDAO().delete(user);
 
         } catch (DAOException | SQLException e) {
             throw new ServiceException("Пользователь не удален");
@@ -86,8 +84,8 @@ public class RoleService implements ServiceInterf<Role> {
     }
 
     @Override
-    public List<Role> getAll() throws ServiceException {
-        List<Role> res;
+    public List<User> getAll() throws ServiceException {
+        List<User> res;
 
         DAOFactory daoFactory = null;
         try {
@@ -105,25 +103,25 @@ public class RoleService implements ServiceInterf<Role> {
     }
 
     @Override
-    public boolean change(Role role) throws ServiceException {
-        List<Role> list = null;
+    public boolean change(User user) throws ServiceException {
+        List<User> list = null;
         boolean res;
-        String login = role.getLogin();
-        String password = role.getPassword();
+        String login = user.getLogin();
+        String password = user.getPassword();
 
         DAOFactory daoFactory = null;
         try {
 
             daoFactory = DAOFactory.getInstance();
             list = daoFactory.getRoleDAO().getAll();
-            for (Role rolesCheck : list) {
+            for (User rolesCheck : list) {
                 if (rolesCheck.getLogin().equalsIgnoreCase(login) &
                         rolesCheck.getPassword().equalsIgnoreCase(password)) {
 
                     throw new DAOException("Это старый пароль");
                 }
             }
-            res = daoFactory.getRoleDAO().change(role);
+            res = daoFactory.getRoleDAO().change(user);
 
         } catch (DAOException | SQLException e) {
             throw new ServiceException("Ошибка изменения  пароля");

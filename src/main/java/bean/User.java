@@ -2,27 +2,27 @@ package bean;
 
 import java.util.Objects;
 
-public class Role {
+public class User {
 
     private String login;
     private String password;
-    private String role;
+    private int role;
 
 
 
-    public Role( String login,String password,String role) {
+    public User(String login, String password, int role) {
         this.login = login;
         this.password = password;
         this.role=role;
 
     }
-    public Role( String login,String password) {
+    public User(String login, String password) {
         this.login = login;
         this.password = password;
-        this.role="USER";
+
 
     }
-    public Role( String login) {
+    public User(String login) {
 
         this.login = login;
 
@@ -45,11 +45,11 @@ public class Role {
         this.login = login;
     }
 
-    public String getRole() {
+    public int getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(int role) {
         this.role = role;
     }
 
@@ -57,15 +57,15 @@ public class Role {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Role role1 = (Role) o;
-        return Objects.equals(role, role1.role) &&
-                Objects.equals(password, role1.password) &&
-                Objects.equals(login, role1.login);
+        User user1 = (User) o;
+        return role == user1.role &&
+                Objects.equals(login, user1.login) &&
+                Objects.equals(password, user1.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash( login,password,role);
+        return Objects.hash(login, password, role);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class Role {
         return "Role{" +
                 "login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
+                ", role=" + role +
                 '}';
     }
 }

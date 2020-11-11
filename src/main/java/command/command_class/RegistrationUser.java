@@ -1,7 +1,6 @@
 package command.command_class;
 
-import bean.Car;
-import bean.Role;
+import bean.User;
 import command.command_exception.CommandException;
 import command.command_inerf.Command;
 import service.service_class.ServiceFactory;
@@ -20,13 +19,14 @@ public class RegistrationUser implements Command {
 
                 String login = mas[1];
                 String password = mas[2];
-                String roles = mas[3];
+                String rol = mas[3];
+                int roles=Integer.parseInt(rol);
 
                 ServiceFactory serviceFactory = ServiceFactory.getInstance();
                 ServiceInterf serviceInterf = serviceFactory.getServiceRole();
 
-                Role role = new Role(login, password,roles);
-                isRes=serviceInterf.create(role);
+                User user = new User(login, password,roles);
+                isRes=serviceInterf.create(user);
 
                     return "Пользователь добавлен";
 

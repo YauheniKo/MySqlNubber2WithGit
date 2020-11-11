@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `mydbtest2`.`roles` ;
 
 CREATE TABLE IF NOT EXISTS `mydbtest2`.`roles` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `role` VARCHAR(45) NULL,
+  `user` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -76,9 +76,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `mydbtest2`;
-INSERT INTO `mydbtest2`.`roles` (`id`, `role`) VALUES (DEFAULT, 'Administrstor');
-INSERT INTO `mydbtest2`.`roles` (`id`, `role`) VALUES (DEFAULT, 'User');
-INSERT INTO `mydbtest2`.`roles` (`id`, `role`) VALUES (DEFAULT, 'Guest');
+INSERT INTO `mydbtest2`.`roles` (`id`, `user`) VALUES (DEFAULT, 'Administrstor');
+INSERT INTO `mydbtest2`.`roles` (`id`, `user`) VALUES (DEFAULT, 'User');
+INSERT INTO `mydbtest2`.`roles` (`id`, `user`) VALUES (DEFAULT, 'Guest');
 
 COMMIT;
 

@@ -1,7 +1,6 @@
 package command.command_class;
 
-import bean.Car;
-import bean.Role;
+import bean.User;
 import command.command_exception.CommandException;
 import command.command_inerf.Command;
 import service.service_class.ServiceFactory;
@@ -23,9 +22,9 @@ public class ChangePassUser implements Command {
 
 
                 ServiceFactory serviceFactory = ServiceFactory.getInstance();
-                ServiceInterf<Role> serviceInterf = serviceFactory.getServiceRole();
-                Role  role=new Role(login,password);
-                        requ = serviceInterf.change(role);
+                ServiceInterf<User> serviceInterf = serviceFactory.getServiceRole();
+                User user =new User(login,password);
+                        requ = serviceInterf.change(user);
 
                 isRes = "Параметры пользователя изменены";
 

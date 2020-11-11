@@ -10,6 +10,8 @@ import java.util.List;
 
 public interface DAOInterf<T> {
 
+
+
     T search(int id) throws DAOException, SQLException;
 
     T search(String parameter1, String parameter2) throws DAOException,SQLException;

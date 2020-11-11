@@ -1,7 +1,6 @@
 package command.command_class;
 
-import bean.Car;
-import bean.Role;
+import bean.User;
 import command.command_exception.CommandException;
 import command.command_inerf.Command;
 import service.service_class.ServiceFactory;
@@ -25,8 +24,8 @@ public class DeleteUser implements Command {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             ServiceInterf serviceInterf = serviceFactory.getServiceRole();
 
-            Role role = new Role(login);
-            isRes = serviceInterf.delete(role);
+            User user = new User(login);
+            isRes = serviceInterf.delete(user);
             if (isRes = true) {
                 res = "Пользователь удален";
             } else res = "Ошибка";
