@@ -10,11 +10,11 @@ import java.util.List;
 
 public class UserDAO implements DAOInterf<User> {
     private static final String URL = "jdbc:mysql://localhost:3306/" +
-            "mydbtest2?useUnicode=true&serverTimezone=UTC&useSSL=false";
+            "mydbtest3?useUnicode=true&serverTimezone=UTC&useSSL=false";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
 
-    public static final String INSERT_NEW = "INSERT INTO user (login, password, roles_id) VALUES (?,?,?)";
+    public static final String INSERT_NEW = "INSERT INTO user (login, password,role_id) VALUES (?,?,?)";
     public static final String DELETE = "DELETE FROM user  WHERE login=?";
     public static final String GET_ALL = "SELECT*FROM user ";
     public static final String CHANGE = "UPDATE user SET password=? where login=?";

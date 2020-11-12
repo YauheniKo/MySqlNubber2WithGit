@@ -70,7 +70,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "Role{" +
+        return "User{" +
                 "login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +

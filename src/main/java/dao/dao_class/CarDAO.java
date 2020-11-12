@@ -10,11 +10,11 @@ import java.util.List;
 
 public class CarDAO implements DAOInterf<Car> {
     private static final String URL = "jdbc:mysql://localhost:3306/" +
-            "mydbtest2?useUnicode=true&serverTimezone=UTC&useSSL=false";
+            "mydbtest3?useUnicode=true&serverTimezone=UTC&useSSL=false";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
 
-    public static final String INSERT_NEW = "INSERT INTO auto( MODEL, TYPE, USER_ID) VALUES (?,?,1)";
+    public static final String INSERT_NEW = "INSERT INTO auto( model, type, user_id) VALUES (?,?,1)";
     public static final String DELETE = "DELETE FROM auto  WHERE id=?";
     public static final String GET_ALL = "SELECT*FROM auto  ";
     public static final String CHANGE = "UPDATE auto SET model=?, type=? where id=?";

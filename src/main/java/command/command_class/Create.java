@@ -14,17 +14,18 @@ public class Create implements Command {
         String isRes = null;
         boolean requ;
         try {
-            if(mas[1]!=null&mas[2]!=null&mas[3]!=null){
-            String id_str = mas[1];
-            String model = mas[2];
-            String type = mas[3];
-            int id = Integer.parseInt(id_str);
+            if(mas[1]!=null&mas[2]!=null){
+
+                String model = mas[1];
+                String type = mas[2];
+                //String id_str = mas[3];
+               // int id = Integer.parseInt(id_str);
 
 
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
             ServiceInterf<Car> serviceInterf = serviceFactory.getServiceCar();
 
-            Car car = new Car(id,model, type);
+            Car car = new Car(model, type);
                 requ = serviceInterf.create(car);
 
                 isRes="Авто добавлено";

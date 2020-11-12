@@ -42,9 +42,9 @@ j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anon
         <form action="/input-pageJsp">
             <!-- Button -->
             <div class="form-group" align="center">
-                <label class="col-md-4 control-label" for="singlebutton1">Вход</label>
+                <label class="col-md-4 control-label" for="singlebutton">Вход</label>
                 <div class="col-md-4">
-                    <button id="singlebutton1" name="singlebutton1" class="btn btn-primary">Button</button>
+                    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Button</button>
                 </div>
             </div>
         </form>

@@ -6,10 +6,11 @@ import command.command_inerf.Command;
 import java.util.HashMap;
 import java.util.Map;
 
-final class CommandProvider {
+final class CommandProvider  {
     final private Map<String, Command> commands = new HashMap<>();
 
     CommandProvider() {
+
         commands.put("CREATE", new Create());
         commands.put("DELETE", new Delete());
         commands.put("GET_ALL", new GetAll());

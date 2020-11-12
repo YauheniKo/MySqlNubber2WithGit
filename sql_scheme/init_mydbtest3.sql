@@ -5,54 +5,54 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydbtest2
+-- Schema mydbtest3
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `mydbtest2` ;
+DROP SCHEMA IF EXISTS `mydbtest3` ;
 
 -- -----------------------------------------------------
--- Schema mydbtest2
+-- Schema mydbtest3
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydbtest2` DEFAULT CHARACTER SET utf8 ;
-USE `mydbtest2` ;
+CREATE SCHEMA IF NOT EXISTS `mydbtest3` DEFAULT CHARACTER SET utf8 ;
+USE `mydbtest3` ;
 
 -- -----------------------------------------------------
--- Table `mydbtest2`.`roles`
+-- Table `mydbtest3`.`role`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydbtest2`.`roles` ;
+DROP TABLE IF EXISTS `mydbtest3`.`role` ;
 
-CREATE TABLE IF NOT EXISTS `mydbtest2`.`roles` (
+CREATE TABLE IF NOT EXISTS `mydbtest3`.`role` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `user` VARCHAR(45) NULL,
+  `role` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydbtest2`.`user`
+-- Table `mydbtest3`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydbtest2`.`user` ;
+DROP TABLE IF EXISTS `mydbtest3`.`user` ;
 
-CREATE TABLE IF NOT EXISTS `mydbtest2`.`user` (
+CREATE TABLE IF NOT EXISTS `mydbtest3`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `login` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
-  `roles_id` INT NOT NULL,
+  `role_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_user_roles_idx` (`roles_id` ASC) VISIBLE,
-  CONSTRAINT `fk_user_roles`
-    FOREIGN KEY (`roles_id`)
-    REFERENCES `mydbtest2`.`roles` (`id`)
+  INDEX `fk_user_role_idx` (`role_id` ASC) VISIBLE,
+  CONSTRAINT `fk_user_role`
+    FOREIGN KEY (`role_id`)
+    REFERENCES `mydbtest3`.`role` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydbtest2`.`auto`
+-- Table `mydbtest3`.`auto`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydbtest2`.`auto` ;
+DROP TABLE IF EXISTS `mydbtest3`.`auto` ;
 
-CREATE TABLE IF NOT EXISTS `mydbtest2`.`auto` (
+CREATE TABLE IF NOT EXISTS `mydbtest3`.`auto` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `model` VARCHAR(45) NULL,
   `type` VARCHAR(45) NULL,
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `mydbtest2`.`auto` (
   INDEX `fk_auto_user1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_auto_user1`
     FOREIGN KEY (`user_id`)
-    REFERENCES `mydbtest2`.`user` (`id`)
+    REFERENCES `mydbtest3`.`user` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -72,34 +72,33 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `mydbtest2`.`roles`
+-- Data for table `mydbtest3`.`role`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydbtest2`;
-INSERT INTO `mydbtest2`.`roles` (`id`, `user`) VALUES (DEFAULT, 'Administrstor');
-INSERT INTO `mydbtest2`.`roles` (`id`, `user`) VALUES (DEFAULT, 'User');
-INSERT INTO `mydbtest2`.`roles` (`id`, `user`) VALUES (DEFAULT, 'Guest');
+USE `mydbtest3`;
+INSERT INTO `mydbtest3`.`role` (`id`, `role`) VALUES (DEFAULT, 'Administrator');
+INSERT INTO `mydbtest3`.`role` (`id`, `role`) VALUES (DEFAULT, 'User');
 
 COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `mydbtest2`.`user`
+-- Data for table `mydbtest3`.`user`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydbtest2`;
-INSERT INTO `mydbtest2`.`user` (`id`, `login`, `password`, `roles_id`) VALUES (DEFAULT, 'admin', 'padmin', 1);
-INSERT INTO `mydbtest2`.`user` (`id`, `login`, `password`, `roles_id`) VALUES (DEFAULT, 'user', 'puser', 2);
+USE `mydbtest3`;
+INSERT INTO `mydbtest3`.`user` (`id`, `login`, `password`, `role_id`) VALUES (DEFAULT, 'admin', 'padmin', 1);
+INSERT INTO `mydbtest3`.`user` (`id`, `login`, `password`, `role_id`) VALUES (DEFAULT, 'user', 'puser', 2);
 
 COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `mydbtest2`.`auto`
+-- Data for table `mydbtest3`.`auto`
 -- -----------------------------------------------------
 START TRANSACTION;
-USE `mydbtest2`;
-INSERT INTO `mydbtest2`.`auto` (`id`, `model`, `type`, `user_id`) VALUES (DEFAULT, 'mersedes', 'sedan', 1);
+USE `mydbtest3`;
+INSERT INTO `mydbtest3`.`auto` (`id`, `model`, `type`, `user_id`) VALUES (DEFAULT, 'volvo', 'universal', 1);
 
 COMMIT;
 

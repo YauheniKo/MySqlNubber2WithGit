@@ -4,11 +4,6 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <!--тег <welcome-file-list> при запуске  нашего приложения эта страница является превой -->
-
-
-
-
 
     <!--Основная jsp страница администратора -->
     <servlet>
@@ -81,8 +76,6 @@
         <servlet-name>ViewPage</servlet-name>
         <url-pattern>/view-page</url-pattern>
     </servlet-mapping>
-
-
 
 
 
