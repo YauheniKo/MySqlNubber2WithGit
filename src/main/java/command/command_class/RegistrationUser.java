@@ -28,7 +28,7 @@ public class RegistrationUser implements Command {
                 User user = new User(login, password,roles);
                 isRes=serviceInterf.create(user);
 
-                    return "Пользователь добавлен";
+                return "Пользователь добавлен";
 
 
             }

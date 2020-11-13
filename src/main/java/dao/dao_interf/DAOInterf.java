@@ -20,7 +20,7 @@ public interface DAOInterf<T> {
 
     boolean delete(T obj) throws DAOException,SQLException;
 
-    List<T> getAll() throws DAOException,SQLException;
+    List<T> getAll() throws DAOException, SQLException;
 
    boolean change(T obj) throws DAOException, SQLException;
 

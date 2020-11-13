@@ -1,6 +1,8 @@
 package somePackage;
 
 import controller.Controller;
+import dao.dao_class.CarDAO;
+import dao.dao_exception.DAOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,10 +19,12 @@ public class AllCarServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         PrintWriter pw = response.getWriter();
         Controller controller =new Controller();
          String result= (controller.doAction("GET_ALL"));
          pw.println(result);
+
 
     }
 }

@@ -17,12 +17,12 @@ public class CreateCarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
 
-        String id = request.getParameter("id");
+        //String id = request.getParameter("id");
         String model = request.getParameter("model");
         String type = request.getParameter("type");
 
         Controller con1 = new Controller();
-            String result = con1.doAction("CREATE, " + id + ", " + model + ", " + type);
+            String result = con1.doAction("CREATE, " + model + ", " + type);
 
        if (result.equalsIgnoreCase("Ошибка")) {
            response.sendRedirect("http://localhost:8080/error-page");

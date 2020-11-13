@@ -106,6 +106,9 @@
         <br>
         <p><h1>Создать пользователя/администр.</h1>
         <form method="post" action="/user-registration">
+             <input id="idR" name="idR"> id
+           <br/>
+           <br/>
             <input id="loginR" name="loginR"> login
             <br/>
             <br/>

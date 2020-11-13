@@ -106,9 +106,9 @@
         <br>
         <p><h1>Добавить автомобиль</h1>
         <form method="post" action="/car-create">
-            <input id="id" name="id"> id
+          <!--  <input id="id" name="id"> id
             <br/>
-            <br/>
+            <br/> -->
             <input id="model" name="model"> model
             <br/>
             <br/>

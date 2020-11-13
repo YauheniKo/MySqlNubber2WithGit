@@ -23,6 +23,13 @@ public class UserDAO implements DAOInterf<User> {
     @Override
     public User search(int ident) throws DAOException, SQLException {
         User user = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              Statement statement = connection.createStatement();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL)) {
@@ -33,15 +40,18 @@ public class UserDAO implements DAOInterf<User> {
                 int id = res.getInt("id");
                 String login = res.getString("login");
                 String password = res.getString("password");
-                int role_id=res.getInt("roles_id");
+                int role_id=res.getInt("role_id");
 
                 if (ident == id) {
 
                     user = new User( login, password,role_id);
+
                 }
 
             }
-
+            if(user==null){
+                throw new DAOException("Пользователь не найдено");
+            }
         } catch (SQLException e) {
             throw new DAOException("Пользователь не найдено");
         }
@@ -57,6 +67,13 @@ public class UserDAO implements DAOInterf<User> {
     public User search(String log, String passw) throws  SQLException,DAOException {
 
         User user = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              Statement statement = connection.createStatement();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL)) {
@@ -67,7 +84,7 @@ public class UserDAO implements DAOInterf<User> {
 
                 String login = res.getString("login");
                 String password = res.getString("password");
-                int roles = res.getInt("roles_id");
+                int roles = res.getInt("role_id");
                 if (log.equalsIgnoreCase(login) && passw.equals(password)) {
                     user = new User(login, password, roles);
                     break;
@@ -90,6 +107,13 @@ public class UserDAO implements DAOInterf<User> {
     @Override
     public boolean create(User user) throws DAOException, SQLException {
         boolean res = true;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              Statement statement = connection.createStatement();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL)) {
@@ -111,8 +135,11 @@ public class UserDAO implements DAOInterf<User> {
                     preparedStatement1.setString(1, user.getLogin());
                     preparedStatement1.setString(2, user.getPassword());
                     preparedStatement1.setInt(3, user.getRole());
+
                     preparedStatement1.executeUpdate();
-return true;
+
+                     return true;
+
                 } catch (SQLException e) {
 
                 }
@@ -132,7 +159,13 @@ return true;
     public boolean delete(User user) throws DAOException, SQLException {
 /*
 Я создаю пользователя для того что бы его потом удалить??
+
  */
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         boolean res = true;
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -154,6 +187,11 @@ return true;
     @Override
     public List getAll() throws DAOException, SQLException {
 
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         List<User> list = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -166,7 +204,7 @@ return true;
 
                 String log = res.getString("login");
                 String passw = res.getString("password");
-                int rol = res.getInt("roles_id");
+                int rol = res.getInt("role_id");
 
                 User user = new User(log, passw, rol);
                 list.add(user);
@@ -184,6 +222,12 @@ return true;
 
     @Override
     public boolean change(User user) throws DAOException, SQLException {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              Statement statement = connection.createStatement();

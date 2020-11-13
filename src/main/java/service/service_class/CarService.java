@@ -89,7 +89,7 @@ public class CarService implements ServiceInterf<Car> {
                 throw new DAOException();
             }
         } catch (DAOException | SQLException e) {
-            throw new ServiceException("Авто не добавлено");
+            throw new ServiceException("Произошла ошибка демонстрацииавто");
         }
 
 

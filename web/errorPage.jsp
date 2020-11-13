@@ -38,6 +38,7 @@ j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anon
 
     <h1 align="center">Призошла ошибка(некорректный ввод) </h1>
 
+
     <!-- Button -->
     <form action="/main-page">
         <!-- Button -->

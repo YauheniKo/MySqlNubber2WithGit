@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarDAO implements DAOInterf<Car> {
-    private static final String URL = "jdbc:mysql://localhost:3306/" +
-            "mydbtest3?useUnicode=true&serverTimezone=UTC&useSSL=false";
+    private static final String URL = "jdbc:mysql://localhost:3306/mydbtest3?useUnicode=true&serverTimezone=UTC&useSSL=false";
+
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
 
@@ -20,10 +20,15 @@ public class CarDAO implements DAOInterf<Car> {
     public static final String CHANGE = "UPDATE auto SET model=?, type=? where id=?";
 
 
-
-    @Override
-    public Car search(int iD) throws  DAOException,SQLException {
+    public Car search(int iD) throws DAOException, SQLException {
         Car car = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              Statement statement = connection.createStatement();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL)) {
@@ -52,8 +57,15 @@ public class CarDAO implements DAOInterf<Car> {
     }
 
     @Override
-    public Car search(String mod, String typ) throws DAOException,SQLException {
+    public Car search(String mod, String typ) throws DAOException, SQLException {
         Car car = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              Statement statement = connection.createStatement();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL)) {
@@ -72,7 +84,6 @@ public class CarDAO implements DAOInterf<Car> {
             }
 
 
-
         } catch (SQLException e) {
             throw new DAOException("Авто не найдено");
         }
@@ -83,8 +94,13 @@ public class CarDAO implements DAOInterf<Car> {
     }
 
     @Override
-    public boolean create(Car cars) throws DAOException,SQLException {
+    public boolean create(Car cars) throws DAOException, SQLException {
 
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              Statement statement = connection.createStatement();
@@ -97,7 +113,6 @@ public class CarDAO implements DAOInterf<Car> {
             preparedStatement.executeUpdate();
 
 
-
         } catch (SQLException e) {
             throw new DAOException("Произошла ошибка добавления авто");
         }
@@ -106,17 +121,24 @@ public class CarDAO implements DAOInterf<Car> {
 
 
     @Override
-    public boolean delete(Car cars) throws DAOException,SQLException {
+    public boolean delete(Car cars) throws DAOException, SQLException {
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         boolean res = false;
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              Statement statement = connection.createStatement();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE)) {
 
-           preparedStatement.setInt(1, cars.getId());
+            preparedStatement.setInt(1, cars.getId());
 
-            if(preparedStatement.executeUpdate()==1)
-            res = true;
-            else res=false;
+            if (preparedStatement.executeUpdate() == 1)
+                res = true;
+            else res = false;
 
         } catch (SQLException e) {
             throw new DAOException("Произошла ошибка удаления");
@@ -125,9 +147,18 @@ public class CarDAO implements DAOInterf<Car> {
     }
 
     @Override
-    public List<Car> getAll() throws DAOException,SQLException {
+    public List<Car> getAll() throws DAOException, SQLException {
         List<Car> list = new ArrayList<>();
+
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
              Statement statement = connection.createStatement();
              PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL)) {
 
@@ -141,14 +172,13 @@ public class CarDAO implements DAOInterf<Car> {
                 Car car = new Car(id, model, type);
                 list.add(car);
 
-                }
+            }
             if(list.size()<1) {
-                throw new DAOException("Произошла ошибка демонстрации всех авто");
+            throw new DAOException("Произошла ошибка демонстрации всех авто");
             }
 
 
-
-        } catch (SQLException e) {
+        } catch (DAOException | SQLException e) {
             throw new DAOException("Произошла ошибка демонстрации всех авто");
         }
 
@@ -159,6 +189,12 @@ public class CarDAO implements DAOInterf<Car> {
     @Override
     public boolean change(Car car) throws DAOException, SQLException {
 
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         try (Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
              Statement statement = connection.createStatement();
              PreparedStatement preparedStatement = connection.prepareStatement(CHANGE)) {
@@ -168,9 +204,9 @@ public class CarDAO implements DAOInterf<Car> {
             preparedStatement.setString(2, car.getType());
             preparedStatement.setInt(3, car.getId());
 
-           if(preparedStatement.executeUpdate()!=1){
-               throw new DAOException("Такого id не существует");
-           }
+            if (preparedStatement.executeUpdate() != 1) {
+                throw new DAOException("Такого id не существует");
+            }
 
 
         } catch (SQLException e) {

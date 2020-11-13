@@ -2,13 +2,12 @@ package somePackage;
 
 import bean.Car;
 import bean.User;
+import command.command_class.GetAll;
 import command.command_exception.CommandException;
 import controller.Controller;
-import dao.dao_class.CarDAO;
 import dao.dao_class.UserDAO;
 import dao.dao_exception.DAOException;
-import service.service_class.CarService;
-import service.service_class.ServiceFactory;
+import service.service_class.UserService;
 import service.service_exception.ServiceException;
 
 import java.sql.SQLException;
@@ -35,20 +34,24 @@ public class MainDAO {
 
 
     public static void main(String[] args) throws DAOException, ServiceException, SQLException, CommandException {
-        Car car=new Car(3,"renault", "fura");
-        User user=new User("harry","qwerty",2);
+        //Car car=new Car(3,"renault", "fura");
+        User user=new User("nort","qwerty",2);
         Controller controller=new Controller();
 
-        //++System.out.println(controller.doAction("SEARCH_ID, 3"));
-        //++System.out.println(controller.doAction("DELETE, 2, renault, fura"));
-        //++System.out.println(controller.doAction("CREATE, opel, sedan"));
-        //++System.out.println(controller.doAction("SEARCH_TWO_PARAM, opel, sedan"));
-        //++System.out.println(controller.doAction("CHANGER_CAR, 3, ford, sedan"));
-        //System.out.println(controller.doAction("GET_ALL_USER"));
-        System.out.println();
+        UserService userService=new UserService();
+        //System.out.println(userDAO.search(1));
+        //System.out.println(userDAO.getAll());
+        //System.out.println(controller.doAction("CREATE, opel, sedan"));
+        //System.out.println(controller.doAction("SEARCH_USER_ID, 3"));
+        //System.out.println(userDAO.search(3));
 
-        String s=controller.doAction("GET_ALL");
-        System.out.println(s.toString());
+        System.out.println(controller.doAction("REGISTRATION, bonya, dfghj, 2"));
+
+        // System.out.println(controller.doAction("GET_ALL_USER"));
+        //System.out.println(controller.doAction("GET_ALL"));
+
+
+
 
     }
 }

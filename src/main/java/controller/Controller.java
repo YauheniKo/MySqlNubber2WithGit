@@ -21,7 +21,7 @@ public class Controller  {
             response = command.execute(request);
 
         } catch (CommandException | NullPointerException e) {
-            new CommandException(e);
+
             response="Ошибка";
         }
         return response;
